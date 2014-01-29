@@ -1,4 +1,4 @@
-__author__ = 'gav'
+__author__ = 'jwp'
 
 import serial
 from time import sleep

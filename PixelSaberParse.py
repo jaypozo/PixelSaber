@@ -1,4 +1,4 @@
-__author__ = 'gav'
+__author__ = 'jwp'
 
 from PIL import Image
 
@@ -67,19 +67,10 @@ def colour_match(rgbin):
 
     return best_col[0],col_dict[best_col[0]]
 
-
 def dither_image(imin):
     return imin
-
-
-
-
 
 output_image()
 im_modified = dither_image(im_modified)
 im_modified.save(outfilename)
 im_text.close()
-
-
-
-

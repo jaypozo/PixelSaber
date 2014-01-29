@@ -41,7 +41,7 @@ convert -background black -fill $fillcol  \
 	images/$filenamebase.gif
 
 #display images/$filenamebase.gif &
-#read -p "Press any key to convert image to Scythe Format"
+#read -p "Press any key to convert image to Saber Format"
 python ./PixelSaberParse.py
 display images/$filenamebase.gif &
 
