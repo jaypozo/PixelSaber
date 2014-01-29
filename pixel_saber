@@ -1,0 +1,49 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+  text_label="Code happy!"
+else
+  text_label="$*"
+fi
+
+filenamebase="output"
+
+text_height=144
+
+# Allowable colours for imagemagick that map to scythe colours
+# White
+# black
+# blue
+# dodgerblue -- lighter blue
+# green1 -- note, use 'green1' not 'green' due to rgb values.
+# aqua -- equivalent to 'teal' in arduino code
+# red
+# yellow
+# fuchsia -- equivalent to 'violet' in arduino  code
+
+strokecol=aqua
+fillcol=white
+
+strokewidth=3
+usefont=/Users/jay/Library/Fonts/Painterz.ttf
+
+
+#########################################################################
+echo "Rendering image for: '" $text_label "'"
+convert -background black -fill $fillcol  \
+	   -font $usefont \
+           -strokewidth $strokewidth  -stroke $strokecol    \
+           -pointsize $text_height\
+           -size x$text_height -gravity center \
+	   -gravity center \
+           label:"$text_label"\
+	images/$filenamebase.gif
+
+#display images/$filenamebase.gif &
+#read -p "Press any key to convert image to Scythe Format"
+python ./PixelSaberParse.py
+display images/$filenamebase.gif &
+
+read -p "Press any key to send to Saber"
+python ./PixelSaberTransmit.py
